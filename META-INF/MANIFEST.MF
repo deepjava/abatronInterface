@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Abatron Interface Telnet
-Bundle-SymbolicName: ch.ntb.inf.abatronIface
+Bundle-SymbolicName: ch.ntb.inf.abatronInterface
 Bundle-Version: 9.9.9
 Bundle-Vendor: www.ntb.ch/inf
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
