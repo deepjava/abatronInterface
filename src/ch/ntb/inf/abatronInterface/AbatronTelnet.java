@@ -1,4 +1,4 @@
-package ch.ntb.inf.abatronIface;
+package ch.ntb.inf.abatronInterface;
 
 import java.net.Socket;
 import java.io.IOException;
