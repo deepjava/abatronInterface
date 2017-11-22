@@ -230,8 +230,8 @@ public class AbatronTelnet extends TargetConnection {
 		try {
 			if (address != -1) {
 				if (Configuration.getBoard().cpu.arch.name.equals(HString.getHString("arm32"))) {
-					if (dbg) StdStreams.vrb.println("[TARGET] arm: Starting from 0x" + Integer.toHexString(address+0x10000000));
-					out.write((("go " + (address+0x10000000) + "\r\n").getBytes()));
+					if (dbg) StdStreams.vrb.println("[TARGET] arm: Starting from 0x" + Integer.toHexString(address+0x0000000));
+					out.write((("go " + (address+0x0000000) + "\r\n").getBytes()));
 				} else {
 					if (dbg) StdStreams.vrb.println("[TARGET] ppc: Starting from 0x" + Integer.toHexString(address));
 					out.write((("go " + address + "\r\n").getBytes()));
@@ -425,12 +425,14 @@ public class AbatronTelnet extends TargetConnection {
 			int pos = filename.indexOf("ftp");
 			String name = filename.substring(pos + 4);
 			name = name.replace('\\', '/');
-			name = name.replaceAll(".bin", ".ExternalRam.bin");
 //			out.write((("halt; load 0x0 " + name + " bin; go 0x100\r\n").getBytes()));
-			if (Configuration.getBoard().cpu.arch.name.equals(HString.getHString("arm32"))) 
-				out.write((("mmu disable; load 0x10000000 " + name + " bin\r\n").getBytes()));				
-			else 
+			if (Configuration.getBoard().cpu.arch.name.equals(HString.getHString("arm32"))) {
+				name = name.replaceAll(".bin", ".InternalRam.bin");
+				out.write((("mmu disable; load 0x0000000 " + name + " bin\r\n").getBytes()));				
+			} else { 
+				name = name.replaceAll(".bin", ".ExternalRam.bin");
 				out.write((("load 0x0 " + name + " bin\r\n").getBytes()));
+			}
 			if (dbg) StdStreams.vrb.println("[TARGET] loading: " + name);
 			StdStreams.log.println(".....");
 			waitForPrompt();
