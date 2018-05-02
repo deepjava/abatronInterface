@@ -510,6 +510,12 @@ public class AbatronTelnet extends TargetConnection {
 		}
 		return value;
 	}
+
+	@Override
+	public long[] getRegisterBlock(String block) throws TargetConnectionException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
