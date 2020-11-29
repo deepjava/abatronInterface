@@ -1,18 +1,19 @@
-package ch.ntb.inf.abatronInterface;
+package org.deepjava.abatronInterface;
 
 import java.net.Socket;
+
+import org.deepjava.config.Configuration;
+import org.deepjava.config.Parser;
+import org.deepjava.config.Register;
+import org.deepjava.host.StdStreams;
+import org.deepjava.linker.TargetMemorySegment;
+import org.deepjava.strings.HString;
+import org.deepjava.target.TargetConnection;
+import org.deepjava.target.TargetConnectionException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-
-import ch.ntb.inf.deep.config.Configuration;
-import ch.ntb.inf.deep.config.Parser;
-import ch.ntb.inf.deep.config.Register;
-import ch.ntb.inf.deep.host.StdStreams;
-import ch.ntb.inf.deep.linker.TargetMemorySegment;
-import ch.ntb.inf.deep.strings.HString;
-import ch.ntb.inf.deep.target.TargetConnection;
-import ch.ntb.inf.deep.target.TargetConnectionException;
 
 public class AbatronTelnet extends TargetConnection {
 
